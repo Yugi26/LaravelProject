@@ -15,3 +15,6 @@ use App\Http\Controllers\PostController; //外部にあるPostControllerを使�
 */
 
 Route::get('/', [PostController::class, 'index']); //PostControllerのindexメソッドを呼び出す
+
+Route::get('/posts/{post}', [PostController::class, 'show']);
+// '/posts/{対象データのID}'にGetリクエストが来たら、PostControllerのshowメソッドを実行する
