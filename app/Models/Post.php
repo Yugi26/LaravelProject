@@ -9,6 +9,11 @@ class Post extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'title', 
+        'body',
+    ];
+
     public function getByLimit(int $limit_count = 10)
     {
         // updated_atで降順に並べ、取得件数を制限する

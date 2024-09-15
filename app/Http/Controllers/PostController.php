@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
-use Illuminate\Http\Request;
+use App\Http\Requests\PostRequest; //useする
 
 class PostController extends Controller
 {
@@ -13,10 +13,22 @@ class PostController extends Controller
         //getPaginateryByLimit()はPost.phpで定義したメソッドです
     }
 
+    public function create()
+    {
+        return view('posts.create');
+    }
+
     public function show(Post $post)
     {
         return view('posts.show')->with(['post' => $post]);
         //'post'はbladeファイルで使用する変数。中身$postはid=1のPostインスタンス
+    }
+
+    public function store(Post $post, PostRequest $request) //引数をRequestからPostRequestに変更
+    {
+        $input = $request['post'];
+        $post->fill($input)->save();
+        return redirect('/posts/' . $post->id);
     }
 }
 ?>
