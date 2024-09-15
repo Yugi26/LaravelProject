@@ -14,8 +14,4 @@ use App\Http\Controllers\PostController; //外部にあるPostControllerを使�
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/posts', [PostController::class, 'index']); //PostControllerのindexメソッドを呼び出す
+Route::get('/', [PostController::class, 'index']); //PostControllerのindexメソッドを呼び出す
