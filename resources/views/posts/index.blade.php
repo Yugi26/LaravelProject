@@ -9,6 +9,15 @@
     <body>
         <h1>Blog Name</h1>
         <a href='/posts/create'>create</a>
+        <div>
+            @foreach($questions as $qustion)
+                <div>
+                    <a href="https://teratail.com/questions/{{ $questions['id'] }}">
+                        {{ $qustion['title'] }}
+                    </a>
+                </div>
+            @endforeach
+        </div>
         <div class='posts'>
             @foreach ($posts as $post)
                 <div class='post'>
