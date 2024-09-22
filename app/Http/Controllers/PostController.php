@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
-use App\Http\Requests\PostRequest; //useする
+use App\Http\Requests\PostRequest;
+use App\Models\Category;
 
 class PostController extends Controller
 {
@@ -13,9 +14,9 @@ class PostController extends Controller
         //getPaginateryByLimit()はPost.phpで定義したメソッドです
     }
 
-    public function create()
+    public function create(Category $category)
     {
-        return view('posts.create');
+        return view('posts.create')->with(['categories' => $category->get()]);
     }
 
     public function show(Post $post)
